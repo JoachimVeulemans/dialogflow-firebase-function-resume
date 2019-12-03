@@ -5,53 +5,40 @@ const functions = require('firebase-functions');
 const app = dialogflow({debug: true});
 const intents = require('./intents');
 
-app.intent('Default Welcome Intent', (conv) => {
-    conv.user.storage.userName = null;
-    const name = conv.user.storage.userName;
-    if (!name) {
-      // Asks the user's permission to know their name, for personalization.
-      conv.ask(new Permission({
-        context: 'Hi there, to get to know you better',
-        permissions: 'NAME',
-      }));
-    } else {
-      conv.ask(`Hi again, ${name}. What's your favorite color?`);
-    }
-  });
-
-  // Handle the Dialogflow intent named 'actions_intent_PERMISSION'. If user
-// agreed to PERMISSION prompt, then boolean value 'permissionGranted' is true.
-app.intent('actions_intent_PERMISSION', (conv, params, permissionGranted) => {
-    if (!permissionGranted) {
-      // If the user denied our request, go ahead with the conversation.
-      conv.ask(intents.welcome());
-    } else {
-      // If the user accepted our request, store their name in
-      // the 'conv.user.storage' object for future conversations.
-      conv.user.storage.userName = conv.user.name.display;
-      conv.ask(`Thanks, ${conv.user.storage.userName}. ` +
-        `What's your favorite color?`);
-    }
-  });
-
-app.intent('Age', (conv) => {
-    const birth = Date.now() - new Date(1999, 2, 17);
-    const age = Math.abs((new Date(birth)).getUTCFullYear() - 1970);
-
-    let answers = [`Mijn leeftijd is ${age}.`, `Ik ben ${age} jaar oud.`];
-
-    conv.add(answers[getRandomIndexFromArray(answers.length)]);
-    conv.ask(randomAsk());
+app.intent('default_welcome_intent', (conv) => {
+  const name = conv.user.storage.userName;
+  if (!name) {
+    conv.add(new Permission({
+      permissions: 'NAME',
+    }));
+  } else {
+    conv.add(intents.default_welcome_intent(name));
+  }
+  conv.ask(intents.random_ending());
 });
 
-const randomAsk = () => {
-    let questions = ['Wil je nog iets weten?', 'Heb je nog een vraag?', 'Stel me gerust nog een vraag.'];
-    return questions[getRandomIndexFromArray(questions.length)];
-};
+app.intent('name_permission_respond', (conv, params, permissionGranted) => {
+  if (!permissionGranted) {
+    conv.add('Geen probleem');
+    conv.add(intents.default_welcome_intent());
+  } else {
+    conv.user.storage.userName = conv.user.name.display.split(' ')[0];
+    conv.add(intents.default_welcome_intent(conv.user.storage.userName));
+  }
+  conv.ask(intents.random_ending());
+});
 
-const getRandomIndexFromArray = (length) => {
-    return Math.floor(Math.random() * length);
-};
+app.intent('age', (conv) => {
+  const birth = Date.now() - new Date(1999, 2, 17);
+  const age = Math.abs((new Date(birth)).getUTCFullYear() - 1970);
 
-// Set the DialogflowApp object to handle the HTTPS POST request.
+  conv.add(intents.age(age));
+  conv.ask(intents.random_ending());
+});
+
+app.intent('emotional_development', (conv) => {
+  conv.add(intents.emotional_development());
+  conv.ask(intents.random_ending());
+});
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(app);
