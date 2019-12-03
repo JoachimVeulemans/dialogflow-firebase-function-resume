@@ -20,12 +20,29 @@ module.exports.random_ending_first = function() {
   return randomAnswer(answers);
 };
 
-module.exports.default_welcome_intent = function(name = '') {
-  if (name !== '') name = ' ' + name;
+module.exports.default_welcome_intent = function() {
   answers = [
-    `Hallo${name}! Hier kan je vragen stellen over mij, Joachim Veulemans.`,
-    `Goedendag${name}! Stel hier je vragen omtrent mijn CV.`,
-    `Hey${name}! Ik ben klaar voor al je vragen over mijn CV.`,
+    `Hier kan je vragen stellen over mij, Joachim Veulemans.`,
+    `Stel hier je vragen omtrent mijn CV.`,
+    `Ik ben klaar voor al je vragen over mijn CV.`,
+  ];
+  return randomAnswer(answers);
+};
+
+module.exports.prefix_name = function(name) {
+  answers = [
+    `Goede vraag ${name}!`,
+    `Even denken ${name}...`,
+    `Dat kan ik je zeggen ${name}.`,
+  ];
+  return randomAnswer(answers);
+};
+
+module.exports.prefix_name_first = function(name) {
+  answers = [
+    `Hallo ${name}!`,
+    `Goedendag ${name}!`,
+    `Hey ${name}!`,
   ];
   return randomAnswer(answers);
 };
