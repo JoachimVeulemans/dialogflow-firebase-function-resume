@@ -68,7 +68,7 @@ app.intent('future_job', (conv) => {
 });
 
 app.intent('no_questions_left', (conv) => {
-  conv.add(prefixNameIfNeeded(conv) + intents.no_questions_left());
+  conv.add(intents.no_questions_left());
   conv.close('Tot ziens!');
 });
 
