@@ -73,7 +73,7 @@ app.intent('no_questions_left', (conv) => {
 });
 
 app.intent('yes_question_left', (conv) => {
-  conv.ask(intents.random_ending());
+  conv.ask(intents.random_question());
 });
 
 app.intent('private_info', (conv) => {

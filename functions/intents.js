@@ -8,6 +8,18 @@ module.exports.random_ending = function() {
     'Heb je nog een vraag?',
     'Indien je één hebt, wat is je volgende vraag?',
     'Zit je nog met een andere vraag?',
+    'Weet je nog iets om aan mij te vragen?',
+  ];
+  return randomAnswer(answers);
+};
+
+module.exports.random_question = function() {
+  answers = [
+    'Wat wil je weten?',
+    'Wat is je vraag?',
+    'Wat is je volgende vraag?',
+    'Wat is de vraag waar je nog mee zit?',
+    'Wat ligt er op je lever?',
   ];
   return randomAnswer(answers);
 };
@@ -16,6 +28,7 @@ module.exports.random_ending_first = function() {
   answers = [
     'Wat wil je weten?',
     'Wat is je vraag?',
+    'Wat wil je van mij weten?',
   ];
   return randomAnswer(answers);
 };
@@ -51,6 +64,7 @@ module.exports.default_fallback_intent = function() {
   answers = [
     'Ik begrijp het niet. Je kan me altijd iets vragen over mijn opleiding, hobby\'s of werkervaring.',
     'Dit kan ik je helaas niet zeggen. Contacteer me anders even voor een gesprek samen via joachim.veulemans@outlook.be',
+    'Ik ben nog niet slim genoeg. Vraag me anders iets makkelijker zoals hoe oud ik ben.',
   ];
   return randomAnswer(answers);
 };
@@ -110,6 +124,7 @@ module.exports.private_info = function() {
 module.exports.residence = function() {
   answers = [
     `Ik ben momenteel woonachtig te Scherpenheuvel.`,
+    `Ik woon momenteel in Scherpenheuvel.`,
   ];
   return randomAnswer(answers);
 };
