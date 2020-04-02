@@ -1,0 +1,22 @@
+# Javascript - Node.js - CD
+
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: npm install
+  workingDirectory: 'functions'
+  displayName: 'npm install'
+
+- script: firebase deploy --project joachimveulemans-kmphby
+  workingDirectory: 'functions'
+  displayName: 'firebase deploy'
