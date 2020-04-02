@@ -1,0 +1,22 @@
+# Javascript - Node.js - CI
+
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: npm install
+  workingDirectory: 'functions'
+  displayName: 'npm install'
+
+- script: npm run lint
+  workingDirectory: 'functions'
+  displayName: 'npm run lint'
