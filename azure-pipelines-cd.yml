@@ -7,6 +7,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: functions
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -21,6 +24,6 @@ steps:
   workingDirectory: 'functions'
   displayName: 'npm install firebase-tools'
 
-- script: firebase deploy --project joachimveulemans-kmphby
+- script: firebase deploy --project joachimveulemans-kmphby --token $(fireBaseToken)
   workingDirectory: 'functions'
   displayName: 'firebase deploy'
