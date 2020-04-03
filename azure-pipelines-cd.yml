@@ -17,6 +17,10 @@ steps:
   workingDirectory: 'functions'
   displayName: 'npm install'
 
+- script: npm install -g firebase-tools
+  workingDirectory: 'functions'
+  displayName: 'npm install firebase-tools'
+
 - script: firebase deploy --project joachimveulemans-kmphby
   workingDirectory: 'functions'
   displayName: 'firebase deploy'
