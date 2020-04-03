@@ -22,6 +22,6 @@ steps:
   displayName: 'npm run lint'
 
 - script: npm audit
-  workingDirectory: './frontend'
+  workingDirectory: 'functions'
   displayName: 'npm audit'
   continueOnError: 'true'
