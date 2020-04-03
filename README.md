@@ -1,4 +1,4 @@
-# Dialogflow Backend Resume
+# Dialogflow Firebase Function Resume
 
 This repository contains the code for the Backend of my resume. My resume is a Google Assistant Service. The backend is hosted on Firebase Functions.
 
@@ -10,9 +10,11 @@ You can test my service on Google Assistant. Currently it can only understand Du
 
 ## Setup
 
-`cd functions`
-`npm install`
+1. `cd functions`
+2. `npm install`
+3. `npm install -g firebase-tools`
 
 ## Deploy
 
-`firebase deploy --project joachimveulemans-kmphby`
+1. `firebase login`
+2. `firebase deploy --project joachimveulemans-kmphby`
