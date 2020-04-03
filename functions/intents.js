@@ -141,7 +141,7 @@ module.exports.work_experience = function() {
   answers = [
     `Ik ben tijdens mijn studie werkzaam geweest bij Edu-Tech als (Lead) Frontend Developer. We ontwikkelden een leerplatform in Angular en de D-taal.`,
     `Naast mijn studies was ik enkele jaren werkzaam als productiemedewerker bij Brouwerij Anders!. Ik overzag de uiteindelijke kwaliteitscontrole van het product tijdens het monitoren van de efficiëntie van het productieproces.`,
-    `Vooraf ik mijn studies bij Hogeschool PXL gestart was, werkte ik als zelfstandige ondernemer. Ik was gespecialiseerd in het verhuren en opstellen van licht en geluid bij verschillende evenementen zoals feesten, fuiven, verjaardagen etc.`
+    `Vooraf ik mijn studies bij Hogeschool PXL gestart was, werkte ik als zelfstandige ondernemer. Ik was gespecialiseerd in het verhuren en opstellen van licht en geluid bij verschillende evenementen zoals feesten, fuiven, verjaardagen etc.`,
   ];
   return randomAnswer(answers);
 };

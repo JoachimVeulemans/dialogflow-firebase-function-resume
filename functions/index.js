@@ -1,6 +1,6 @@
 'use strict';
 
-const {dialogflow, BasicCard, Permission, Suggestions, Carousel, Image} = require('actions-on-google');
+const {dialogflow, Permission} = require('actions-on-google');
 const functions = require('firebase-functions');
 const app = dialogflow({debug: true});
 const intents = require('./intents');
