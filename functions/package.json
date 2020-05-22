@@ -4,7 +4,7 @@
   "author": "Google Inc",
   "private": true,
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "scripts": {
     "lint": "eslint .",
@@ -22,6 +22,6 @@
   "devDependencies": {
     "eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
-    "firebase-tools": "^8.3.0"
+    "firebase-tools": "^8.4.0"
   }
 }
